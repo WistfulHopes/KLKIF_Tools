@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FilePackage": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\wistf\\Downloads\\KLK_IF\\KLKIF_Tools\\FilePackage\\bin\\Debug\\net8.0\\unit_ActionData.pac"
+    }
+  }
+}

@@ -1,0 +1,254 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:UnitDataEditor.ViewModels"
+             xmlns:unitData="clr-namespace:UnitDataEditor.UnitData"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="UnitDataEditor.Views.AttackParamView"
+             x:DataType="vm:AttackParamViewModel">
+    
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:AttackParamViewModel/>
+    </Design.DataContext>
+    
+    <DockPanel>
+        <StackPanel Margin="20">
+            <ComboBox x:Name="AttackComboBox" SelectedIndex="0"
+                      Width="300" MaxDropDownHeight="300"
+                      ItemsSource="{Binding AttackDatas}"
+                      SelectedItem="{Binding CurrentAttackData}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name, DataType={x:Type unitData:AttackData}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <ScrollViewer>
+            <StackPanel Margin="20">
+                <TextBlock Margin="0 5">ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.Id, Mode=TwoWay}" Watermark="The move ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Name:</TextBlock>
+                <TextBox Text="{Binding CurrentAttackData.Name, Mode=TwoWay}" Watermark="The move name."/>
+                <TextBlock Margin="0 5">Japanese Name:</TextBlock>
+                <TextBox Text="{Binding CurrentAttackData.JpName, Mode=TwoWay}" Watermark="The Japanese move name."/>
+                <TextBlock Margin="0 5">Damage:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.Damage}"                    
+                    />
+                <TextBlock Margin="0 5">CPU ID 0:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.CpuId0, Mode=TwoWay}" Watermark="CPU related ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Hit Priority:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.HitPriority}"                    
+                />
+                <TextBlock Margin="0 5">Meter Gain (Player):</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.MeterGainPlayer}"                    
+                />
+                <TextBlock Margin="0 5">Meter Gain (Block):</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.MeterGainBlock}"                    
+                />
+                <TextBlock Margin="0 5">Meter Gain (Hit):</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.MeterGainHit}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 0:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt0}"                    
+                />
+                <TextBlock Margin="0 5">Self Hitstop:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.SelfHitstop}"                    
+                />
+                <TextBlock Margin="0 5">Collision Disable Timer:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.CollisionDisableTimer}"                    
+                />
+                <TextBlock Margin="0 5">Hitstop:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.Hitstop}"                    
+                />
+                <TextBlock Margin="0 5">Hit Exit:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.HitExit}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 1:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt1}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 2:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt21}"                    
+                />
+                <TextBlock Margin="0 5">Combo Limit Addition:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.ComboLimitAdd}"                    
+                />
+                <TextBlock Margin="0 5">Attack Flags:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.AttackFlags}"                    
+                />
+                <TextBlock Margin="0 5">Ground Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.GroundKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Air Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.AirKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Block Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.BlockKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Unknown Knockback ID 0:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.UnkKnockbackId0, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Unknown Knockback ID 1:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.UnkKnockbackId1, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Special Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.SpecialKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Ground Clash Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.GroundClashKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Air Clash Knockback ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.AirClashKnockbackId, Mode=TwoWay}" Watermark="Unknown ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Counter Hit ID:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.CounterHitId, Mode=TwoWay}" Watermark="Potentially an ID for chain cancelling." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Hit Sound Effect:</TextBlock>
+                <TextBox Text="{Binding CurrentAttackData.HitSe, Mode=TwoWay}" Watermark="The hit sound effect."/>
+                <TextBlock Margin="0 5">Unknown Float 3:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.UnkFloat3}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Float 4:</TextBlock>
+                <NumericUpDown
+                    Minimum="0"
+                    Value="{Binding CurrentAttackData.UnkFloat4}"                    
+                />
+                <TextBlock Margin="0 5">CPU ID 1:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.CpuId1, Mode=TwoWay}" Watermark="CPU related ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">CPU ID 2:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.CpuId2, Mode=TwoWay}" Watermark="CPU related ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">CPU ID 3:</TextBlock>
+                <MaskedTextBox Text="{Binding CurrentAttackData.CpuId3, Mode=TwoWay}" Watermark="CPU related ID." Mask="AAAAAAAA" AsciiOnly="True"/>
+                <TextBlock Margin="0 5">Unknown Integer 3:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt3}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 4:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt4}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 5:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt5}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 6:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt6}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 7:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt7}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 8:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt8}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 9:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt9}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 10:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt10}"                    
+                />             
+                <TextBlock Margin="0 5">Unknown Integer 11:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt11}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 12:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt12}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 13:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt13}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 14:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt14}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 15:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt15}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 16:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt16}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 17:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt17}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 18:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt18}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 19:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt19}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 20:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt20}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 21:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt21}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 22:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt22}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 23:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt23}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Float 5:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkFloat5}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 24:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt24}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Integer 25:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt25}"                    
+                />
+                <TextBlock Margin="0 5">Unknown Name:</TextBlock>
+                <TextBox Text="{Binding CurrentAttackData.UnkName, Mode=TwoWay}" Watermark="Unknown name."/>
+                <TextBlock Margin="0 5">Unknown Integer 26:</TextBlock>
+                <NumericUpDown
+                    Value="{Binding CurrentAttackData.UnkInt26}"                    
+                />
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel DockPanel.Dock="Right">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Command="{Binding AddMove}">
+                Add Attack
+            </Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Command="{Binding DeleteMove}">
+                Delete Attack
+            </Button>
+    </StackPanel>
+    </DockPanel>
+</UserControl>
